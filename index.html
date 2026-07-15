@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AmorOS ❤️</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    width:90%;
+    max-width:500px;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+h1{
+    color:#ff4d6d;
+}
+
+button{
+    background:#ff4d6d;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    margin-top:20px;
+}
+
+
+#mensaje{
+    margin-top:20px;
+}
+
+.corazon{
+    position:fixed;
+    bottom:-50px;
+    font-size:30px;
+    animation:subir 6s linear infinite;
+}
+
+@keyframes subir{
+    from{
+        transform:translateY(0);
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-110vh);
+        opacity:0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+    <div id="login" style="text-align:center; padding:50px;">
+
+    <h1>❤️ Bienvenido, mi amor ❤️</h1>
+
+    <p>Ingresa la contraseña para entrar a AmorOS</p>
+
+    <input
+    type="password"
+    id="clave"
+    placeholder="Contraseña"
+    style="padding:10px;border-radius:10px;">
+
+    <br>
+
+    <button onclick="verificarClave()">
+        Entrar ❤️
+    </button>
+
+    <p id="error" style="color:red;"></p>
+
+</div>
+
+<div class="card" id="contenido" style="display:none;">
+    <h1>❤️ AmorOS ❤️</h1>
+
+    <h2>Hola Amorcito ❤️</h2>
+    
+<img src="amor.jpg" alt="Betzy y Jhonayker" width="250" style="border-radius:20px; margin:20px 0;">
+
+    <p>
+        Desde el 07/10/2025 estamos escribiendo nuestra historia juntos.
+    </p>
+    
+    <h3 id="contador"></h3>
+
+    <button onclick="mostrarMensaje()">
+        Presióname ❤️    
+</button>
+
+<div id="carta"></div>
+
+<h2>🤖 BetzyBot</h2>
+
+<input
+type="text"
+id="pregunta"
+placeholder="Escribe algo amor..."
+style="padding:10px;border-radius:10px;border:none;width:80%;">
+
+<br>
+
+<button onclick="hablarBot()">
+Enviar ❤️
+</button>
+
+<div id="respuesta"></div>
+
+<h2>📸 Nuestros Recuerdos</h2>
+
+<img id="galeria" src="fotos/foto1.jpg" width="300" style="border-radius:20px;">
+
+<br><br>
+
+<button onclick="anteriorFoto()">⬅️ Anterior</button>
+<button onclick="siguienteFoto()">➡️ Siguiente</button>
+
+<p id="numeroFoto">Foto 1 de 19 ❤️</p>
+
+<button onclick="mostrarCarta()" style="margin-top:20px;">
+    Carta para Jhonayker 💌
+</button>
+
+    <div id="mensaje"></div>
+
+<div id="mensaje"></div>
+
+<div style="margin-top:30px; text-align:center;">
+
+    <h2>🎵 Nuestra Canción</h2>
+
+<audio id="musica" src="NuestraCancion.mp3" controls style="width:100%; margin-top:10px;"></audio>
+
+</div>
+
+</div>
+
+<script>
+
+const fechaInicio = new Date("2025-10-07");
+
+function actualizarContador() {
+
+    const hoy = new Date();
+    const diferencia = hoy - fechaInicio;
+
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+
+    const horas = Math.floor(
+        (diferencia % (1000 * 60 * 60 * 24)) /
+        (1000 * 60 * 60)
+    );
+
+    const minutos = Math.floor(
+        (diferencia % (1000 * 60 * 60)) /
+        (1000 * 60)
+    );
+
+    const segundos = Math.floor(
+        (diferencia % (1000 * 60)) /
+        1000
+    );
+
+    document.getElementById("contador").innerHTML =
+        `❤️ Bet y Jhona llevan ${dias} días, ${horas} horas, ${minutos} minutos y ${segundos} segundos juntos ❤️`;
+}
+
+actualizarContador();
+setInterval(actualizarContador, 1000);
+
+function mostrarMensaje(){
+
+const mensajes = [
+"Te amo ❤️",
+"Gracias por existir ❤️",
+"Eres mi persona favorita ❤️",
+"Estoy orgullosa de ti ❤️",
+"Con amor, Betzy ❤️",
+"Eres demasiado fuerte ❤️",
+"Sigo esperando el anillo 💍❤️",
+"Siempre serás mi corazón noble ❤️",
+"FUTURO INGENIERO DE SISTEMAS 👷❤️",
+"Siempre serás mi luz, al final de la oscuridad ❤️"
+];
+
+const aleatorio =
+mensajes[Math.floor(Math.random()*mensajes.length)];
+
+document.getElementById("mensaje").innerHTML =
+"<h3>" + aleatorio + "</h3>";
+
+}
+
+function mostrarCarta(){
+
+document.getElementById("carta").innerHTML = `
+<div style="
+background:#fff0f5;
+padding:20px;
+margin-top:20px;
+border-radius:15px;
+">
+
+<h3>💌 Para mi amor Jhonayker</h3>
+
+<p>
+Gracias por acompañarme en esta historia.
+Estoy orgullosa de ti y de todo lo que lograrás.
+</p>
+
+<p>
+Con amor,
+Betzy ❤️
+</p>
+
+</div>
+`;
+
+}
+
+function hablarBot(){
+
+let texto =
+document.getElementById("pregunta").value.toLowerCase();
+
+let respuesta = "";
+
+if(texto.includes("te amo")){
+    respuesta = "Yo también te amo muchísimo ❤️";
+}
+else if(texto.includes("te extraño")){
+    respuesta = "Yo también te extraño amor ❤️";
+}
+else if(texto.includes("triste")){
+    respuesta = "Estoy contigo siempre ❤️";
+}
+else if(texto.includes("anillo")){
+    respuesta = "Sigo esperando mi anillo 💍😌";
+}
+else if(texto.includes("ingeniero")){
+    respuesta = "Mi futuro ingeniero de sistemas favorito ❤️";
+}
+else{
+    respuesta = "Hola amor ❤️, aunque no entendí eso, quiero que sepas que estoy orgullosa de ti y te amo muchísimo. - Betzy";
+}
+
+document.getElementById("respuesta").innerHTML =
+"<h3>" + respuesta + "</h3>";
+
+}
+
+const fotos = [];
+
+for(let i = 1; i <= 19; i++){
+    fotos.push(`fotos/foto${i}.jpg`);
+}
+
+let fotoActual = 0;
+
+function actualizarGaleria(){
+    document.getElementById("galeria").src = fotos[fotoActual];
+    document.getElementById("numeroFoto").innerHTML =
+        "Foto " + (fotoActual + 1) + " de 19 ❤️";
+}
+
+function siguienteFoto(){
+    fotoActual++;
+
+    if(fotoActual >= fotos.length){
+        fotoActual = 0;
+    }
+
+    actualizarGaleria();
+}
+
+function anteriorFoto(){
+    fotoActual--;
+
+    if(fotoActual < 0){
+        fotoActual = fotos.length - 1;
+    }
+
+    actualizarGaleria();
+}
+
+function reproducirMusica(){
+    document.getElementById("musica").play();
+}
+
+function pausarMusica(){
+    document.getElementById("musica").pause();
+}
+
+function verificarClave(){
+
+    const clave =
+    document.getElementById("clave").value;
+
+    if(clave === "amorcito"){
+
+        document.getElementById("login").style.display = "none";
+
+        document.getElementById("contenido").style.display = "block";
+
+    }else{
+
+        document.getElementById("error").innerHTML =
+        "❌ Contraseña incorrecta";
+
+    }
+}
+
+</script>
+
+<div class="corazon" style="left:10%;">❤️</div>
+<div class="corazon" style="left:30%; animation-delay:1s;">💖</div>
+<div class="corazon" style="left:50%; animation-delay:2s;">💕</div>
+<div class="corazon" style="left:70%; animation-delay:3s;">💘</div>
+<div class="corazon" style="left:90%; animation-delay:4s;">💝</div>
+
+</body>
+</html>
